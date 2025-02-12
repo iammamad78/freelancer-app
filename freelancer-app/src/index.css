@@ -1,0 +1,29 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Vazir";
+  min-height: 100vh;
+  user-select: none;
+  background-color: #f4f5f7;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+}
+button:disabled {
+  cursor: default;
+  background-color: rgb(var(--color-secondary-100), 0.5);
+  pointer-events: none;
+  box-shadow: none;
+}
