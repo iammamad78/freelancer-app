@@ -1,7 +1,7 @@
 import React from "react";
 
 function App() {
-  return <div>شروع پروژه</div>;
+  return <h1 className="text-3xl font-bold">شروع پروژه</h1>;
 }
 
 export default App;
