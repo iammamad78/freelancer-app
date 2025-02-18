@@ -49,7 +49,7 @@ body {
 * {
   box-sizing: border-box;
   scroll-behavior: smooth;
-  border: none;
+  /* border: none; */
   outline: none;
   padding: 0;
   margin: 0;
@@ -64,4 +64,8 @@ button:disabled {
   background-color: rgb(var(--color-secondary-100), 0.5);
   pointer-events: none;
   box-shadow: none;
+}
+
+label {
+  display: block;
 }
