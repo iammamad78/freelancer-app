@@ -5,8 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { getOtp } from "../../services/authService";
 import Loading from "../../ui/Loading";
 
-function SendOTPForm({ setStep }) {
-  const [phoneNumber, setPhoneNumber] = useState("");
+function SendOTPForm({ setStep, phoneNumber, onChange }) {
   const { isPending, error, data, mutateAsync } = useMutation({
     mutationFn: getOtp,
   });
@@ -16,7 +15,6 @@ function SendOTPForm({ setStep }) {
     try {
       const data = await mutateAsync({ phoneNumber });
       toast.success(data.message || "کد تایید با موفقیت ارسال شد");
-      setPhoneNumber("");
       setStep(2);
     } catch (error) {
       toast.error(error?.response?.data?.message || "خطا در ارسال کد تایید");
@@ -30,7 +28,7 @@ function SendOTPForm({ setStep }) {
           label="شماره موبایل"
           name={phoneNumber}
           value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
+          onChange={onChange}
         />
         <div>
           {isPending ? (
