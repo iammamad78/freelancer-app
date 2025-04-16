@@ -2,8 +2,8 @@ import React from "react";
 
 function textField({ name, value, onChange, label }) {
   return (
-    <div>
-      <label className="mb-2 block" htmlFor="name">
+    <div className="space-y-3">
+      <label className="mb-2 block " htmlFor="name">
         {label}
       </label>
       <input

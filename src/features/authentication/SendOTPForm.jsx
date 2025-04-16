@@ -22,10 +22,15 @@ function SendOTPForm({ setStep, phoneNumber, onChange }) {
   };
 
   return (
-    <div className="sm:max-w-screen-sm">
-      <form onSubmit={handleSendOtp} className="space-y-8">
+    <div className="sm:max-w-screen-sm h-">
+      <form
+        onSubmit={handleSendOtp}
+        className="p-10 space-y-8 md:border md:border-secondary-300 rounded-xl"
+      >
+        <img src="/public/cdnlogo.com_freelancer.svg" alt="logo" />
+        <h2 className="text-secondary-900 font-bold">ورود | ثبت نام</h2>
         <TextField
-          label="شماره موبایل"
+          label="لطفا شماره موبایل خود را وارد کنید"
           name={phoneNumber}
           value={phoneNumber}
           onChange={onChange}

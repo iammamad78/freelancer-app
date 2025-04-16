@@ -30,18 +30,22 @@ function CheckOTPForm({ phoneNumber }) {
   };
 
   return (
-    <div className="sm:max-w-screen-sm">
-      <form className="space-y-10" onSubmit={handleCheckOtp}>
+    <div className="md:max-w-screen-md">
+      <form
+        className="p-8 space-y-8 md:border md:border-secondary-300 rounded-xl"
+        onSubmit={handleCheckOtp}
+      >
+        <img src="/public/cdnlogo.com_freelancer.svg" alt="logo" />
         <p className="font-bold text-secondary-800">کد تایید را وارد کنید</p>
         <OTPInput
           value={otp}
           onChange={setOtp}
           numInputs={6}
-          renderSeparator={<span>-</span>}
+          renderSeparator={<span className="text-secondary-400">-</span>}
           renderInput={(props) => <input {...props} />}
-          containerStyle="flex flex-row-reverse justify-center gap-x-1 sm:gap-x-4"
+          containerStyle="flex flex-row-reverse justify-center gap-x-1"
           inputStyle={{
-            width: "2.5rem",
+            width: "2.2rem",
             padding: "0.5rem 0.2rem",
             border: "1px solid bga(var(--color-primary-400))",
             borderRadius: "0.5rem",
