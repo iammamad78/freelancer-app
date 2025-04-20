@@ -5,6 +5,7 @@ import { checkOtp } from "../../services/authService";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { HiArrowRight } from "react-icons/hi";
+import Loading from "../../ui/Loading";
 
 const RESEND_OTP_TIME = 90; // seconds
 
@@ -13,7 +14,7 @@ function CheckOTPForm({ phoneNumber, onBack, onResendOTP, otpResponse }) {
   const [time, setTime] = useState(RESEND_OTP_TIME);
   const navigate = useNavigate();
 
-  const { isPending, error, data, mutateAsync } = useMutation({
+  const { isPending, mutateAsync } = useMutation({
     mutationFn: checkOtp,
   });
 
@@ -23,8 +24,8 @@ function CheckOTPForm({ phoneNumber, onBack, onResendOTP, otpResponse }) {
       const { user, message } = await mutateAsync({ phoneNumber, otp });
       toast.success(message || "کد تایید با موفقیت تایید شد");
       if (user.isActive) {
-        if (user.role === "OWNER") navigate("/owner");
-        if (user.role === "FREELANCER") navigate("/freelancer");
+        // if (user.role === "OWNER") navigate("/owner");
+        // if (user.role === "FREELANCER") navigate("/freelancer");
       } else {
         navigate("/complete-profile");
       }
@@ -73,7 +74,15 @@ function CheckOTPForm({ phoneNumber, onBack, onResendOTP, otpResponse }) {
             <button onClick={onResendOTP}>ارسال مجدد کد</button>
           )}
         </div>
-        <button className="btn btn--primary w-full">تایید</button>
+        <div>
+          {isPending ? (
+            <Loading />
+          ) : (
+            <button type="submit" className="btn btn--primary w-full">
+              تایید
+            </button>
+          )}
+        </div>
       </form>
     </div>
   );
