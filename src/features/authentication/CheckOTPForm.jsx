@@ -8,7 +8,7 @@ import { HiArrowRight } from "react-icons/hi";
 
 const RESEND_OTP_TIME = 90; // seconds
 
-function CheckOTPForm({ phoneNumber, onBack, onResendOTP }) {
+function CheckOTPForm({ phoneNumber, onBack, onResendOTP, otpResponse }) {
   const [otp, setOtp] = useState("");
   const [time, setTime] = useState(RESEND_OTP_TIME);
   const navigate = useNavigate();
@@ -51,13 +51,7 @@ function CheckOTPForm({ phoneNumber, onBack, onResendOTP }) {
           <HiArrowRight className="w-6 h-6 text-secondary-500" />
         </button>
         <p className="font-bold text-secondary-800">کد تایید را وارد کنید</p>
-        <div>
-          {time > 0 ? (
-            <p className="text-sm">{time} ثانیه مانده تا دریافت مجدد کد</p>
-          ) : (
-            <button onClick={onResendOTP}>ارسال مجدد کد</button>
-          )}
-        </div>
+        {otpResponse && <p className="text-sm">{otpResponse?.message}</p>}
         <OTPInput
           value={otp}
           onChange={setOtp}
@@ -72,6 +66,13 @@ function CheckOTPForm({ phoneNumber, onBack, onResendOTP }) {
             borderRadius: "0.5rem",
           }}
         />
+        <div className="flex justify-center">
+          {time > 0 ? (
+            <p className="text-sm">{time} ثانیه مانده تا دریافت مجدد کد</p>
+          ) : (
+            <button onClick={onResendOTP}>ارسال مجدد کد</button>
+          )}
+        </div>
         <button className="btn btn--primary w-full">تایید</button>
       </form>
     </div>
