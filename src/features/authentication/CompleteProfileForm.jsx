@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import TextField from "../../ui/TextField";
+import RadioInput from "../../ui/RadioInput";
 
 function CompleteProfileForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
+  console.log(role);
 
   return (
     <div className="flex justify-center pt-10">
@@ -25,27 +28,22 @@ function CompleteProfileForm() {
             onChange={(e) => setEmail(e.target.value)}
           />
           <div className="flex justify-center items-center gap-x-8">
-            <div className="flex items-center gap-x-2 text-secondary-500">
-              <input
-                type="radio"
-                name="role"
-                id="OWNER"
-                value="OWNER"
-                className="cursor-pointer w-4 h-4 form-radio text-primary-900 focus:ring-primary-900"
-              />
-              <label htmlFor="OWNER">کارفرما</label>
-            </div>
-
-            <div className="flex items-center gap-x-2 text-secondary-500">
-              <input
-                type="radio"
-                name="role"
-                id="FREELANCER"
-                value="FREELANCER"
-                className="cursor-pointer w-4 h-4 form-radio text-primary-900 focus:ring-primary-900"
-              />
-              <label htmlFor="FREELANCER">فریلنسر</label>
-            </div>
+            <RadioInput
+              label="کارفرما"
+              value="OWNER"
+              id="OWNER"
+              name={role}
+              onChange={(e) => setRole(e.target.value)}
+              checked={role === "OWNER"}
+            />
+            <RadioInput
+              label="فریلنسر"
+              value="FREELANCER"
+              id="FREELANCER"
+              name={role}
+              onChange={(e) => setRole(e.target.value)}
+              checked={role === "FREELANCER"}
+            />
           </div>
           <button className="btn btn--primary w-full">تایید</button>
         </form>
