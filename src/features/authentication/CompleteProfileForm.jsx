@@ -5,11 +5,13 @@ import { useMutation } from "@tanstack/react-query";
 import { completeProfile } from "../../services/authService";
 import toast from "react-hot-toast";
 import Loading from "../../ui/Loading";
+import { useNavigate } from "react-router-dom";
 
 function CompleteProfileForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
+  const navigate = useNavigate();
 
   const { mutateAsync, isPending } = useMutation({
     mutationFn: completeProfile,
@@ -20,12 +22,20 @@ function CompleteProfileForm() {
     try {
       const { user, message } = await mutateAsync({ name, email, role });
       toast.success(message);
-      console.log(user);
+
+      if (user.status !== 2) {
+        navigate("/");
+        toast("پروفایل شما در انتظار تایید است", { icon: "ℹ️" });
+        return;
+      }
+
+      if (user.role === "OWNER") return navigate("/owner");
+      if (user.role === "FREELANCER") return navigate("/freelancer");
     } catch (error) {
       toast.error(error?.response?.data?.message || "خطا در ثبت نام");
     }
   };
-  
+
   return (
     <div className="flex justify-center pt-10">
       <div className="w-full sm:max-w-screen-sm ">
@@ -74,7 +84,7 @@ function CompleteProfileForm() {
                 تایید
               </button>
             )}
-          </div>{" "}
+          </div>
         </form>
       </div>
     </div>

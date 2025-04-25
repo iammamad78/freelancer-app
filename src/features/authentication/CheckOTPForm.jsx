@@ -23,12 +23,18 @@ function CheckOTPForm({ phoneNumber, onBack, onResendOTP, otpResponse }) {
     try {
       const { user, message } = await mutateAsync({ phoneNumber, otp });
       toast.success(message || "کد تایید با موفقیت تایید شد");
-      if (user.isActive) {
-        // if (user.role === "OWNER") navigate("/owner");
-        // if (user.role === "FREELANCER") navigate("/freelancer");
-      } else {
-        navigate("/complete-profile");
+
+      if (!user.isActive) return navigate("/complete-profile");
+
+      if (user.status !== 2) {
+        navigate("/");
+        toast("پروفایل شما در انتظار تایید است", { icon: " ❕❕❕" });
+        return;
       }
+
+      if (user.role === "OWNER") return navigate("/owner");
+      if (user.role === "FREELANCER") return navigate("/freelancer");
+      
     } catch (error) {
       toast.error(error?.response?.data?.message || "خطا در تایید کد تاییدیه");
     }

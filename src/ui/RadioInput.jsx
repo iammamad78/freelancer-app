@@ -12,7 +12,7 @@ function RadioInput({ label, name, id, value, checked, onChange }) {
         onChange={onChange}
         className="cursor-pointer w-4 h-4 form-radio text-primary-900 focus:ring-primary-900"
       />
-      <label htmlFor={value}>{label}</label>
+      <label htmlFor={id}>{label}</label>
     </div>
   );
 }
