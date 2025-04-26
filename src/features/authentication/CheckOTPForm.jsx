@@ -34,7 +34,6 @@ function CheckOTPForm({ phoneNumber, onBack, onResendOTP, otpResponse }) {
 
       if (user.role === "OWNER") return navigate("/owner");
       if (user.role === "FREELANCER") return navigate("/freelancer");
-      
     } catch (error) {
       toast.error(error?.response?.data?.message || "خطا در تایید کد تاییدیه");
     }
@@ -48,10 +47,10 @@ function CheckOTPForm({ phoneNumber, onBack, onResendOTP, otpResponse }) {
   }, [time]);
 
   return (
-    <div className="md:max-w-screen-md">
+    <div className="sm:max-w-screen-sm">
       <form
-        className="p-8 space-y-8 md:border md:border-secondary-300 rounded-xl"
         onSubmit={handleCheckOtp}
+        className="px-8 space-y-8 md:border md:border-secondary-300 md:p-10  rounded-xl"
       >
         <img src="/public/cdnlogo.com_freelancer.svg" alt="logo" />
         <button onClick={onBack}>

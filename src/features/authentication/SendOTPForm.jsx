@@ -5,7 +5,7 @@ import Loading from "../../ui/Loading";
 
 function SendOTPForm({ phoneNumber, onChange, onSubmit, isSendingOTP }) {
   return (
-    <div className="sm:max-w-screen-sm h-">
+    <div className="sm:max-w-screen-sm">
       <form
         onSubmit={onSubmit}
         className="p-10 space-y-8 md:border md:border-secondary-300 rounded-xl"
