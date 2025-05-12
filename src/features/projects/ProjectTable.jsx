@@ -2,6 +2,7 @@ import React from "react";
 import useOwnerProjects from "./useOwnerProjects";
 import Loading from "../../ui/Loading";
 import Empty from "../../ui/Empty";
+import truncateText from "../../utils/truncateText";
 
 function ProjectTable() {
   const { isLoading, projects } = useOwnerProjects();
@@ -31,7 +32,7 @@ function ProjectTable() {
           {projects.map((project, index) => (
             <tr key={project._id}>
               <td>{index + 1}</td>
-              <td>{project.title}</td>
+              <td>{truncateText(project.title, 10)}</td>
               <td>{project.category.title}</td>
               <td>{project.budget}</td>
               <td>{project.deadline}</td>
