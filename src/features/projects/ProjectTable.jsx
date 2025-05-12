@@ -4,6 +4,7 @@ import Loading from "../../ui/Loading";
 import Empty from "../../ui/Empty";
 import truncateText from "../../utils/truncateText";
 import toLocalDateShort from "../../utils/toLocalDateShort";
+import { toPersianNumbersWithComma } from "../../utils/toPersianNumbers";
 
 function ProjectTable() {
   const { isLoading, projects } = useOwnerProjects();
@@ -35,10 +36,10 @@ function ProjectTable() {
               <td>{index + 1}</td>
               <td>{truncateText(project.title, 10)}</td>
               <td>{project.category.title}</td>
-              <td>{project.budget}</td>
+              <td>{toPersianNumbersWithComma(project.budget)}</td>
               <td>{toLocalDateShort(project.deadline)}</td>
               <td>
-                <div className="flex flex-wrap items-center gap-2 max-w-[200px]">
+                <div className="flex flex-wrap items-center gap-2 max-w-[100px]">
                   {project.tags.map((tag) => (
                     <span key={tag} className="badge badge--secondary">
                       {tag}
