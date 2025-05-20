@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "../../ui/Modal";
 import { HiOutlinePlus } from "react-icons/hi";
+import CreateProjectForm from "./CreateProjectForm";
 
 function ProjectsHeader() {
   const [open, setOpen] = useState(false);
@@ -12,7 +13,7 @@ function ProjectsHeader() {
         onClose={() => setOpen(false)}
         title="اضافه کردن پروژه جدید"
       >
-        سلام
+        <CreateProjectForm />
       </Modal>
       <button
         onClick={() => setOpen(true)}
