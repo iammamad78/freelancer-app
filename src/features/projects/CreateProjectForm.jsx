@@ -1,16 +1,37 @@
 import React, { useState } from "react";
 import TextField from "../../ui/TextField";
+import { useForm } from "react-hook-form";
 
 function CreateProjectForm() {
-  const [title, setTitle] = useState("");
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+  
   return (
-    <form>
+    <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>
       <TextField
         label="عنوان پروژه"
-        name={title}
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        name="title"
+        register={register}
+        required
+        validationSchema={{
+          required: "این فیلد الزامی است",
+          minLength: {
+            value: 10,
+            message: "نام پروژه باید حداقل 10 کاراکتر باشد",
+          },
+        }}
+        errors={errors}
       />
+      <button type="submit" className="btn btn--primary w-full">
+        تایید
+      </button>
     </form>
   );
 }
