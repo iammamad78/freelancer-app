@@ -1,9 +1,7 @@
-import React, { useState } from "react";
 import TextField from "../../ui/TextField";
-
 import Loading from "../../ui/Loading";
 
-function SendOTPForm({ phoneNumber, onChange, onSubmit, isSendingOTP }) {
+function SendOTPForm({ register, onSubmit, isSendingOTP }) {
   return (
     <div className="sm:max-w-screen-sm">
       <form
@@ -14,9 +12,8 @@ function SendOTPForm({ phoneNumber, onChange, onSubmit, isSendingOTP }) {
         <h2 className="text-secondary-900 font-bold">ورود | ثبت نام</h2>
         <TextField
           label="لطفا شماره موبایل خود را وارد کنید"
-          name={phoneNumber}
-          value={phoneNumber}
-          onChange={onChange}
+          name="phoneNumber"
+          register={register}
         />
         <div>
           {isSendingOTP ? (
