@@ -13,7 +13,7 @@ function ProjectsHeader() {
         onClose={() => setOpen(false)}
         title="اضافه کردن پروژه جدید"
       >
-        <CreateProjectForm />
+        <CreateProjectForm onClose={() => setOpen(false)} />
       </Modal>
       <button
         onClick={() => setOpen(true)}
