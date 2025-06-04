@@ -5,7 +5,6 @@ import ProposalRow from "./ProposalRow";
 
 function ProposalsTable({ proposals }) {
   if (!proposals.length) return <Empty resourceName="درخواست" />;
-  console.log(proposals);
 
   return (
     <Table>

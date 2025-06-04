@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "../../ui/Table";
 import truncateText from "../../utils/truncateText";
+import Modal from "../../ui/Modal";
+import { BiMessageSquareEdit } from "react-icons/bi";
+import ChangeProposalStatus from "./ChangeProposalStatus";
 
 const statusStyles = [
   {
@@ -19,6 +22,7 @@ const statusStyles = [
 
 function ProposalRow({ proposal, index }) {
   const { status, user } = proposal;
+  const [open, setOpen] = useState(false);
 
   return (
     <Table.Row>
@@ -35,7 +39,19 @@ function ProposalRow({ proposal, index }) {
         </span>
       </td>
       <td>
-        
+        <Modal
+          title="تغییر وضعیت درخواست"
+          open={open}
+          onClose={() => setOpen(false)}
+        >
+          <ChangeProposalStatus
+            proposalId={proposal._id}
+            onClose={() => setOpen(false)}
+          />
+        </Modal>
+        <button onClick={() => setOpen(true)}>
+          <BiMessageSquareEdit className="w-6 h-6 text-primary-800 hover:text-secondary-500" />
+        </button>
       </td>
     </Table.Row>
   );
