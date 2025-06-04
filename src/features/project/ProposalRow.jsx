@@ -50,7 +50,7 @@ function ProposalRow({ proposal, index }) {
           />
         </Modal>
         <button onClick={() => setOpen(true)}>
-          <BiMessageSquareEdit className="w-6 h-6 text-primary-800 hover:text-secondary-500" />
+          <BiMessageSquareEdit className="w-5 h-5 text-primary-800 hover:text-secondary-500" />
         </button>
       </td>
     </Table.Row>

@@ -27,7 +27,7 @@ function ProjectRow({ project, index }) {
       <td>{toPersianNumbersWithComma(project.budget)}</td>
       <td>{toLocalDateShort(project.deadline)}</td>
       <td>
-        <div className="flex flex-wrap items-center gap-2 max-w-[100px]">
+        <div className="flex flex-wrap items-center gap-2 max-w-[400px]">
           {project.tags.map((tag) => (
             <span key={tag} className="badge badge--secondary">
               {tag}
