@@ -1,10 +1,11 @@
 import React from "react";
-import Stat from "./Stat";
+
 import {
   HiCollection,
   HiCurrencyDollar,
   HiOutlineViewGrid,
 } from "react-icons/hi";
+import Stat from "../../ui/Stat";
 
 function Stats({ projects }) {
   const numOfProjects = projects.length;
