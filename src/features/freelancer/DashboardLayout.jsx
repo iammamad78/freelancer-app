@@ -1,8 +1,9 @@
 import React from "react";
-import DashboardHeader from "./DashboardHeader";
+
 import Stats from "./Stats";
 import Loading from "../../ui/Loading";
 import useProposals from "../proposals/useProposals";
+import DashboardHeader from "../../ui/DashboardHeader";
 
 function DashboardLayout() {
   const { isLoading, proposals } = useProposals();
