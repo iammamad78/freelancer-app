@@ -8,7 +8,7 @@ function AppLayout({ children }) {
       <Header />
       {children}
 
-      <div className="bg-secondary-100 p-8 overflow-y-auto">
+      <div className="bg-secondary-100 p-8 overflow-y-auto min-h-screen">
         <div className="mx-auto max-w-screen-lg flex flex-col gap-y-12">
           <Outlet />
         </div>
