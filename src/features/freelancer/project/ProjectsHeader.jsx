@@ -41,7 +41,7 @@ function ProjectsHeader() {
           filterField="category"
           options={[
             {
-              value: "All",
+              value: "ALL",
               label: "همه دسته بندی ها",
             },
             ...transformedCategories,
