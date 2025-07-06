@@ -10,7 +10,7 @@ function ProtectedRoute({ children }) {
 
   useEffect(() => {
     if (!isAuthenticated && !isLoading) navigate("/auth");
-    if (!isAuthorized && isLoading) navigate("/not-access", { replace: true });
+    if (!isAuthorized && !isLoading) navigate("/not-access", { replace: true });
   }, [isLoading, isAuthenticated, isAuthorized, navigate]);
 
   if (isLoading)
