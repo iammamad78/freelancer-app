@@ -72,6 +72,8 @@ function App() {
             <Route index element={<Navigate to="dashboard" replace="true" />} />
             <Route path="dashboard" element={<AdminDashboard />} />
             <Route path="users" element={<Users />} />
+            <Route path="proposals" element={<Proposals />} />
+            <Route path="projects" element={<SubmittedProjects />} />
           </Route>
 
           <Route path="/" element={<Home />} />
