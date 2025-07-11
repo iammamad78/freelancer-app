@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Table from "../../../ui/Table";
 import Modal from "../../../ui/Modal";
 import { BiMessageSquareEdit } from "react-icons/bi";
+import ChangeUserStatus from "./ChangeUserStatus";
 
 const statusStyles = [
   {
@@ -41,10 +42,10 @@ function UsersRow({ user, index }) {
           open={open}
           onClose={() => setOpen(false)}
         >
-          {/* <ChangeProposalStatus
-            proposalId={proposal._id}
+          <ChangeUserStatus
+            userId={user._id}
             onClose={() => setOpen(false)}
-          /> */}
+          />
         </Modal>
         <button onClick={() => setOpen(true)}>
           <BiMessageSquareEdit className="w-5 h-5 text-primary-800 hover:text-secondary-500" />
